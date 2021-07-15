@@ -55,4 +55,4 @@ jobs:
           # Path to SQL script file to deploy
           sql-file: # optional
           # In case DACPAC option is selected, additional SqlPackage.exe arguments that will be applied. When SQL query option is selected, additional sqlcmd.exe arguments will be applied.
-          arguments: # optional
+          arguments: /v:AppUserPassword=${{ secrets.AZURE_SQL_PASSWORD }} /v:ETLUserPassword=${{ secrets.AZURE_SQL_PASSWORD }}
