@@ -43,16 +43,16 @@ jobs:
           msbuild.exe sql\wwi-dw-ssdt\WideWorldImportersDW.sqlproj /p:Configuration=Release /p:Platform=x64 /t:Rebuild /p:OutDir=.\bin\Release
           echo test, and deploy your project.
       
-      # - name: Azure SQL Deploy
-      #   uses: Azure/sql-action@v1
-      #   with:
-      #     # Name of the Azure SQL Server name, like Fabrikam.database.windows.net.
-      #     server-name: 
-      #     # The connection string, including authentication information, for the Azure SQL Server database.
-      #     connection-string: 
-      #     # Path to DACPAC file to deploy
-      #     dacpac-package: .\bin\Release\WideWorldImportersDW.dacpac
-      #     # Path to SQL script file to deploy
-      #     sql-file: # optional
-      #     # In case DACPAC option is selected, additional SqlPackage.exe arguments that will be applied. When SQL query option is selected, additional sqlcmd.exe arguments will be applied.
-      #     arguments: # optional
+      - name: Azure SQL Deploy
+        uses: Azure/sql-action@v1
+        with:
+          # Name of the Azure SQL Server name, like Fabrikam.database.windows.net.
+          server-name: 
+          # The connection string, including authentication information, for the Azure SQL Server database.
+          connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+          # Path to DACPAC file to deploy
+          dacpac-package: .\bin\Release\WideWorldImportersDW.dacpac
+          # Path to SQL script file to deploy
+          sql-file: # optional
+          # In case DACPAC option is selected, additional SqlPackage.exe arguments that will be applied. When SQL query option is selected, additional sqlcmd.exe arguments will be applied.
+          arguments: # optional
